@@ -1,0 +1,35 @@
+/* Element text styling */
+
+  /* Style for individual element boxes */
+  .element {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    color: black
+  }
+  
+.number {
+    font-size: 12px;
+  }
+  
+  .symbol {
+    margin-top: -6px;
+    margin-bottom: -6px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .name {
+    font-size: 10px;
+  }
+  
+  .mass {
+    font-size: 12px;
+  }
