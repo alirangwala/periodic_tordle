@@ -2,25 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #74dd7d;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #74dd7d;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(242, 235, 98);
+  font-family: 'Nunito', sans-serif;
 }
 
 @layer utilities {
+
   .text-balance {
     text-wrap: balance;
   }

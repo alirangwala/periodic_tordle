@@ -1,9 +1,11 @@
-import PeriodicTable from "@/components/PeriodicTable/PeriodicTable";
+import Game from "@/components/Game/Game";
+import Title from "@/components/Title/Title";
 
 export default function Home() {
   return (
    <>
-    <PeriodicTable />
+   <Title title = {"Periodic Tordle"} subtitle = {"Can you guess the Element?"} />
+   <Game />
    </>
   );
 }

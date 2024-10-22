@@ -5,11 +5,13 @@ export interface ElementProps {
   number: number;
   symbol: string;
   name: string;
+  setInput: any;
+  guessed: boolean;
 }
 
-const Element: React.FC<ElementProps> = ({number, symbol, name}) => {
+const Element = ({number, symbol, name, setInput, guessed}: ElementProps) => {
   return (
-    <div className="element">
+    <div className={guessed ?  "unguessed-element" : "guessed-element" }onClick={() => setInput(name)}>
       <div className="number">{number}</div>
       <div className="symbol">{symbol}</div>
       <div className="name">{name}</div>

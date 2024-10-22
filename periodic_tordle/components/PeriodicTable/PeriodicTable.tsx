@@ -1,74 +1,81 @@
 import React from 'react'
-import Input from '../Input'
 import Element from '../Element/Element'
-import { ElementData, elements } from '@/lib/elements'
-import "./PeriodicTable.css";
+import { ElementData, elementMap } from '@/lib/elements'
 import GapElement from '../GapElement/GapElement';
+import "./PeriodicTable.css";
 
 
+export interface PeriodicTableProps {
+  setCurrentGuess: (guess: string)=> void;
+  setInput: (str: string)=> void;
+  guessedElements: string[]
+}
 
-const mapElements = (elements: ElementData[]) => {
-  return elements.map((el: ElementData, index) => (
+
+const PeriodicTable = ({setCurrentGuess, guessedElements, setInput}: PeriodicTableProps)=> {
+
+  const mapElements = (elements: any, start: number, end: number) => {
+    return Array.from(elements.values()).slice(start,end).map((el: any, index) => (
       <Element 
-      key = {index}
-      number= {el.num}
-      name = {el.name}
-      symbol = {el.symbol}
+        key={index}
+        number={el.num}
+        name={el.name}
+        symbol={el.symbol}
+        setInput={setInput}
+        guessed = {guessedElements.includes(el.name.toLowerCase())}
       />
-  ))
-}
+    ))
+  }
+  
+  const mapGaps = (gap_number: number) => {
+    return Array.apply(null, Array(gap_number)).map((_, index) => (
+        <GapElement key ={index} />
+    ))
+  }
+  
+  // const updatedElements = [...elements]
 
-
-const mapGaps = (gap_number: number) => {
-  return Array.apply(null, Array(gap_number)).map((_, index) => (
-      <GapElement key ={index} />
-  ))
-}
-
-const PeriodicTable = () => {
+  console.log(elementMap)
   return (
     <>
-    <Input />
     <div className="periodic-table">
-          {mapElements(elements.slice(0,1))}
+          {mapElements(elementMap,0,1)}
           {mapGaps(17)}
-          {mapElements(elements.slice(1,2))}
+          {mapElements(elementMap,1,2)}
 
-          {mapElements(elements.slice(2,4))}
+          {mapElements(elementMap,2,4)}
           {mapGaps(11)}
-          {mapElements(elements.slice(4 ,10))}
+          {mapElements(elementMap,4,10)}
 
-          {mapElements(elements.slice(10,12))}
+          {mapElements(elementMap,10,12)}
           {mapGaps(11)}
-          {mapElements(elements.slice(12 ,18))}
+          {mapElements(elementMap,12,18)}
 
-          {mapElements(elements.slice(18,21))}
+          {mapElements(elementMap,18,21)}
           {mapGaps(1)}
-          {mapElements(elements.slice(21 ,36))}
+          {mapElements(elementMap,21,36)}
 
-          {mapElements(elements.slice(36,39))}
+          {mapElements(elementMap,36,39)}
           {mapGaps(1)}
-          {mapElements(elements.slice(39 ,54))}
+          {mapElements(elementMap,39,54)}
 
-          {mapElements(elements.slice(54,57))}
+          {mapElements(elementMap,54,57)}
           {mapGaps(1)}
-          {mapElements(elements.slice(57 ,72))}
+          {mapElements(elementMap,57,72)}
 
-          {mapElements(elements.slice(72,75))}
+          {mapElements(elementMap,72,75)}
           {mapGaps(1)}
-          {mapElements(elements.slice(75 ,90))}
+          {mapElements(elementMap,75,90)}
 
           {mapGaps(19)}
 
           {mapGaps(4)}
-          {mapElements(elements.slice(90,104))}
+          {mapElements(elementMap,90,104)}
           {mapGaps(1)}
 
           {mapGaps(4)}
-          {mapElements(elements.slice(104,118))}
+          {mapElements(elementMap,104,118)}
           {mapGaps(1)}
-
-
     </div>
     </>
   )
